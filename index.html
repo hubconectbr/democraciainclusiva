@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Democracia Inclusiva - Aplicação Interativa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .chart-container { position: relative; width: 100%; max-width: 700px; margin-left: auto; margin-right: auto; height: 400px; max-height: 50vh; }
+        .solution-card.active { border-color: #2563eb; transform: translateY(-5px); }
+        .solution-detail { transition: all 0.3s ease-in-out; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+        <header class="text-center py-16 sm:py-24">
+            <div class="flex justify-center mb-6">
+                <img src="LOGO-DEMOCRACIA-INCLUSIVA.jpg" alt="Logo Democracia Inclusiva" class="h-28 w-auto">
+            </div>
+            <h1 class="text-4xl sm:text-5xl font-bold text-emerald-700">Democracia Inclusiva</h1>
+            <p class="mt-4 text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto">Facilitando o voto, garantindo direitos. Uma iniciativa para fortalecer a cidadania através da tecnologia e da inclusão.</p>
+        </header>
+
+        <section id="challenge" class="py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold">O Desafio: Barreiras à Cidadania</h2>
+                <p class="mt-3 text-lg text-slate-600 max-w-3xl mx-auto">Muitos cidadãos enfrentam obstáculos significativos para exercer seu direito ao voto. Nosso projeto busca eliminar essas barreiras para garantir uma participação democrática plena e equitativa.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-500">
+                    <span class="text-3xl">🏛️</span>
+                    <h3 class="font-bold text-lg mt-2">Estrutura Física</h3>
+                    <p class="mt-1 text-slate-600">Locais de votação sem rampas, banheiros adaptados ou sinalização tátil.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-500">
+                    <span class="text-3xl">👥</span>
+                    <h3 class="font-bold text-lg mt-2">Capacitação</h3>
+                    <p class="mt-1 text-slate-600">Falta de equipes treinadas e de materiais acessíveis para o atendimento.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-500">
+                    <span class="text-3xl">📊</span>
+                    <h3 class="font-bold text-lg mt-2">Falta de Dados</h3>
+                    <p class="mt-1 text-slate-600">Invisibilidade de dados claros sobre o nível de acessibilidade e inclusão.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-500">
+                    <span class="text-3xl">⚖️</span>
+                    <h3 class="font-bold text-lg mt-2">Legitimidade</h3>
+                    <p class="mt-1 text-slate-600">Impacto direto na equidade e na legitimidade do processo democrático.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="solution" class="py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold">Nossa Solução: Um Ecossistema Digital Inclusivo</h2>
+                <p class="mt-3 text-lg text-slate-600 max-w-3xl mx-auto">Para resolver esses desafios, propomos um ecossistema digital completo e integrado. Explore os sete pilares da nossa solução inovadora clicando em cada um deles.</p>
+            </div>
+            <div class="flex justify-center mb-6">
+                <img src="TELA-APP-SIMULACAO.jpg" alt="Tela do Aplicativo Democracia Inclusiva - Simulação" class="w-full max-w-md h-auto rounded-lg shadow-lg">
+            </div>
+            <div id="solution-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            </div>
+        </section>
+        
+        <section id="results" class="py-16 bg-white rounded-lg shadow-lg">
+            <div class="text-center mb-12 px-6">
+                <h2 class="text-3xl font-bold">Resultados Esperados e Impacto</h2>
+                <p class="mt-3 text-lg text-slate-600 max-w-3xl mx-auto">Nossos objetivos são ambiciosos e focados em gerar um impacto real e mensurável. O gráfico abaixo demonstra as metas que fortalecerão a democracia. Passe o mouse sobre as barras para ver os detalhes.</p>
+            </div>
+            <div class="chart-container">
+                <canvas id="resultsChart"></canvas>
+            </div>
+             <div class="mt-12 text-center px-6">
+                <h3 class="text-2xl font-bold">Objetivo Geral</h3>
+                <p class="mt-2 text-lg text-slate-600">Garantir o direito ao voto com dignidade, acessibilidade e autonomia.</p>
+            </div>
+        </section>
+        
+        <section id="special" class="py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold">O que torna esta Iniciativa Especial?</h2>
+                <p class="mt-3 text-lg text-slate-600 max-w-3xl mx-auto">Este projeto vai além da tecnologia, promovendo uma transformação social alinhada a princípios globais de desenvolvimento e cidadania.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="text-center p-4">
+                    <span class="text-4xl">💡</span>
+                    <h3 class="font-bold text-lg mt-2">Inovação e Cidadania</h3>
+                    <p class="mt-1 text-slate-600">Integra tecnologia, cidadania e inovação pública para uma inclusão real e mensurável.</p>
+                </div>
+                <div class="text-center p-4">
+                    <span class="text-4xl">🌍</span>
+                    <h3 class="font-bold text-lg mt-2">Aplicabilidade Nacional</h3>
+                    <p class="mt-1 text-slate-600">O modelo é adaptável e pode ser replicado em todo o território nacional.</p>
+                    <div class="mt-4 flex flex-col items-center">
+                        <div class="w-16 h-16 bg-blue-200 rounded-full flex items-center justify-center text-blue-800 font-bold text-sm">AM</div>
+                        <div class="w-px h-4 bg-gray-300"></div>
+                        <div class="w-16 h-16 bg-green-200 rounded-full flex items-center justify-center text-green-800 font-bold text-sm">AP</div>
+                        <div class="w-px h-4 bg-gray-300"></div>
+                        <div class="w-16 h-16 bg-purple-200 rounded-full flex items-center justify-center text-purple-800 font-bold text-sm">SP</div>
+                    </div>
+                    <p class="mt-2 text-sm text-slate-500">Exemplos de expansão</p>
+                </div>
+                <div class="text-center p-4">
+                    <span class="text-4xl">📈</span>
+                    <h3 class="font-bold text-lg mt-2">Alinhamento Estratégico</h3>
+                    <p class="mt-1 text-slate-600">Compromisso com os ODS, princípios ESG e a Resolução CNJ 401/2021.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center py-12 border-t mt-16">
+            <p class="font-bold text-lg">Parceiros</p>
+            <div class="flex justify-center items-center space-x-8 mt-4">
+                <img src="tre-ap.png" alt="Logo TRE-AP" class="h-12">
+                <img src="logo_ifap.png" alt="Logo IFAP" class="h-12">
+                <img src="logomarca_gpticam.png" alt="Logo GPTICAM" class="h-12">
+            </div>
+            <p class="mt-8 text-slate-600">Projeto idealizado por Patrick Dayan Guimarães Pinto, Analista Judiciário – TRE-AP.</p>
+            <p class="text-sm text-slate-500">Democracia Inclusiva © 2025</p>
+        </footer>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const solutionData = [
+                { id: 1, icon: '📱', title: 'Aplicativo Acessível', detail: `
+                    <p class="text-slate-600 pt-4 border-t mt-4">Um aplicativo centralizado onde o eleitor pode encontrar informações sobre a acessibilidade das escolas, rotas e funcionalidades de apoio.</p>
+                    <div class="flex justify-center mt-4">
+                        <img src="TELA-APP.jpg" alt="Interface do Aplicativo" class="w-full max-w-xs rounded-lg shadow-md">
+                    </div>
+                ` },
+                { id: 2, icon: '🗓️', title: 'Agendamento Prioritário', detail: 'Funcionalidade que permite o agendamento de atendimento prioritário nos postos eleitorais, reduzindo filas e otimizando o tempo do eleitor.' },
+                { id: 3, icon: '🏆', title: 'Selo de Acessibilidade', detail: 'Um selo que reconhece e certifica as escolas e locais de votação que cumprem os requisitos de acessibilidade, incentivando a melhoria contínua.' },
+                { id: 4, icon: '🚗', title: 'Equipes Móveis', detail: 'Equipes de atendimento personalizadas e itinerantes para auxiliar eleitores com mobilidade muito reduzida, levando o serviço até eles quando necessário.' },
+                { id: 5, icon: '📡', title: 'Painéis de BI', detail: `
+                    <p class="text-slate-600 pt-4 border-t mt-4">Painéis de Business Intelligence com indicadores e dados em tempo real sobre a acessibilidade, permitindo uma gestão transparente e baseada em evidências.</p>
+                    <div class="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                        <h4 class="font-semibold text-blue-800 mb-2">Simulação de Dashboard de Acessibilidade</h4>
+                        <div class="grid grid-cols-2 gap-2 text-sm">
+                            <div class="bg-blue-100 p-2 rounded">Escolas Acessíveis: <span class="font-bold text-blue-700">75%</span></div>
+                            <div class="bg-blue-100 p-2 rounded">Atendimentos Prioritários: <span class="font-bold text-blue-700">1200+</span></div>
+                            <div class="bg-blue-100 p-2 rounded">Satisfação Usuário: <span class="font-bold text-blue-700">92%</span></div>
+                            <div class="bg-blue-100 p-2 rounded">Solicitações Atendidas: <span class="font-bold text-blue-700">98%</span></div>
+                        </div>
+                        <p class="mt-3 text-xs text-blue-700">Dados simulados para ilustração.</p>
+                    </div>
+                ` },
+                { id: 6, icon: '🤖', title: 'Chatbot Inclusivo', detail: `
+                    <p class="text-slate-600 pt-4 border-t mt-4">Assistente virtual com suporte para LIBRAS, texto simplificado e linguagem inclusiva, para tirar dúvidas e orientar os eleitores de forma acessível.</p>
+                    <div class="mt-4 p-4 bg-green-50 rounded-lg border border-green-200 text-sm">
+                        <div class="flex items-start mb-2">
+                            <span class="text-xl mr-2">👤</span>
+                            <div class="bg-green-200 p-2 rounded-lg max-w-[70%]">Olá, preciso agendar minha biometria.</div>
+                        </div>
+                        <div class="flex items-end justify-end">
+                            <div class="bg-blue-200 p-2 rounded-lg max-w-[70%]">Olá! Para agendar, acesse a seção de "Agendamento" no aplicativo. Posso ajudar em mais alguma coisa?</div>
+                            <span class="text-xl ml-2">🤖</span>
+                        </div>
+                        <p class="mt-3 text-xs text-green-700">Exemplo de interação do chatbot.</p>
+                    </div>
+                ` },
+                { id: 7, icon: '🎮', title: 'Gamificação', detail: 'Um sistema de gamificação para engajar as escolas na jornada pela acessibilidade, com rankings, missões e recompensas, tornando o processo mais colaborativo.' }
+            ];
+
+            const solutionContainer = document.getElementById('solution-container');
+            let activeCard = null;
+
+            solutionData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'solution-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent cursor-pointer transition-all duration-300';
+                card.innerHTML = `
+                    <div class="flex items-center">
+                        <span class="text-3xl mr-4">${item.icon}</span>
+                        <h3 class="font-bold text-lg">${item.title}</h3>
+                    </div>
+                    <div class="solution-detail h-0 overflow-hidden mt-0">
+                        ${item.detail}
+                    </div>
+                `;
+                solutionContainer.appendChild(card);
+                
+                card.addEventListener('click', () => {
+                    if (activeCard && activeCard !== card) {
+                        activeCard.classList.remove('active');
+                        activeCard.querySelector('.solution-detail').style.height = '0px';
+                        activeCard.querySelector('.solution-detail').classList.add('mt-0');
+
+                    }
+                    card.classList.toggle('active');
+                    const detail = card.querySelector('.solution-detail');
+                    if (card.classList.contains('active')) {
+                        detail.style.height = detail.scrollHeight + 'px';
+                        detail.classList.remove('mt-0');
+                        activeCard = card;
+                    } else {
+                        detail.style.height = '0px';
+                        detail.classList.add('mt-0');
+                        activeCard = null;
+                    }
+                });
+            });
+
+            const ctx = document.getElementById('resultsChart').getContext('2d');
+            const resultsChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Autonomia dos(as) Eleitores(as)', 'Equipes Capacitadas', 'Engajamento e Relatório Públicos', 'Atendimento Inclusivo', 'Redução de Reclamações'],
+                    datasets: [{
+                        label: 'Meta de Impacto (%)',
+                        data: [100, 100, 70, 70, 50],
+                        backgroundColor: [
+                            'rgba(22, 163, 74, 0.7)', /* Green */
+                            'rgba(37, 99, 235, 0.7)', /* Blue */
+                            'rgba(217, 119, 6, 0.7)',  /* Orange */
+                            'rgba(37, 99, 235, 0.7)', /* Blue lighter */
+                            'rgba(220, 38, 38, 0.7)'  /* Red */
+                        ],
+                        borderColor: [
+                            'rgba(22, 163, 74, 1)',
+                            'rgba(37, 99, 235, 1)',
+                            'rgba(217, 119, 6, 1)',
+                            'rgba(37, 99, 235, 1)',
+                            'rgba(220, 38, 38, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%'
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.raw + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
